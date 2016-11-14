@@ -111,6 +111,8 @@ class Collection(ical.Collection):
 
     @classmethod
     def is_node(cls, path):
+        if path.find('/') == -1:
+            return True
         filesystem_path = pathutils.path_to_filesystem(path, FOLDER)
         return os.path.isdir(filesystem_path)
 
